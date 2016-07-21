@@ -6,7 +6,7 @@ $(function() {
   });
 });
 
-$('a').click(function(event) {
+$('.smooth-scroll').click(function(event) {
   event.preventDefault();
   var link = this;
   $.smoothScroll({

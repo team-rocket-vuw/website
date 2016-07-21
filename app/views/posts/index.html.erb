@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top affix">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        Menu <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
 
-<h1>Listing Posts</h1>
+      <a class="navbar-brand page-scroll" href="#page-top">Team Rocket VUW</a>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Home', root_path, { class: 'page-scroll' } %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.author %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div class="container" id="blog-div">
+  <% @posts.each do |post| %>
+    <div class="well">
+      <h3 class="blog-title"><%= post.title %></h3>
+      <p class="blog-content"><%= post.content %></p>
+      <p class="author-text">Author:  <%= post.author.capitalize %></p>
+    </div>
+  <% end %>
+</div>

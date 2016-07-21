@@ -7,6 +7,10 @@
 </head>
 <body id="page-top" class="index">
 
+<% if !current_page?('/') && !current_page?('/index') %>
+  
+<% end %>
+
 <%= yield %>
 
 <%= javascript_include_tag 'application'%>
