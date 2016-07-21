@@ -1,27 +1,16 @@
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top affix">
-  <div class="container">
-    <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        Menu <i class="fa fa-bars" aria-hidden="true"></i>
-      </button>
-
-      <a class="navbar-brand page-scroll" href="#page-top">Team Rocket VUW</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path, { class: 'page-scroll' } %></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= render 'navbar' %>
 
 <div class="container" id="blog-div">
+
+  <%= render 'admin_controls' %>
+
   <% @posts.each do |post| %>
     <div class="well">
       <h3 class="blog-title"><%= post.title %></h3>
       <p class="blog-content"><%= post.content %></p>
       <p class="author-text">Author:  <%= post.author.capitalize %></p>
+      <%= link_to "Edit Post", edit_post_path(post) %>
+      <%= link_to "Delete Post", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   <% end %>
 </div>

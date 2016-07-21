@@ -1,0 +1,6 @@
+<% if admin_signed_in? %>
+  <div class="well">
+    <h4>Note this is only visible to logged in admin</h4>
+    <button class="btn btn-default"><%= link_to 'new blog post', new_post_path %></button>
+  </div>
+<% end %>
