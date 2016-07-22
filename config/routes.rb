@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'index' => 'welcome#index'
 
   resources :posts
+
+  post 'preview' => 'preview#show', as: :preview
 end
