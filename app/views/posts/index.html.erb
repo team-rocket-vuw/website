@@ -1,25 +1,27 @@
 <%= render 'navbar' %>
 
 <div class="container" id="blog-div">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col col-lg-4 col-md-6 col-sm-12">
+        <div class="post vertically-centered">
+          <h3 class="post-title text-center"><%= post.title %></h3>
+          <p class="post-author text-center"><%= post.author.capitalize %> on <%= post.created_at.strftime("%B %d, %Y") %></p>
 
-  <%= render 'admin_controls' %>
+          <p class="post-preview text-center"><%= post.preview %></p>
 
-  <% @posts.each do |post| %>
-    <div class="well">
-      <h3 class="blog-title"><%= link_to post.title, post_path(post) %></h3>
-      <div class="post-body">
-        <%= markdown(post.content) %>
+          <div class="centered">
+            <button type="button" class="btn btn-default"><%= link_to "Read More", post_path(post) %></button>
+          </div>
+
+          <% if admin_signed_in? %>
+          <div class="centered admin-controls">
+            <p><%= link_to "Edit Post", edit_post_path(post) %></p>
+            <p><%= link_to "Delete Post", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %></p>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <!-- <p class="blog-content"><%= post.content %></p> -->
-      <p class="author-text">Author:  <%= post.author.capitalize %></p>
-      <p class="published-text">Published At:  <%= post.created_at.to_formatted_s(:long) %></p>
-      <p class="edit-text">Edited At:  <%= post.updated_at.to_formatted_s(:long) %></p>
-
-      <% if admin_signed_in? %>
-        <h4 style="padding-top: 20px;">Admin Controls</h4>
-        <%= link_to "Edit Post", edit_post_path(post) %>
-        <%= link_to "Delete Post", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

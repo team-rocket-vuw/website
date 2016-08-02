@@ -6,10 +6,9 @@
     <%= @post.title %>
   </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= @post.content %>
-  </p>
+  <div class="post-body">
+    <%= markdown(@post.content) %>
+  </div>
 
   <p>
     <strong>Author:</strong>

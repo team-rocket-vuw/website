@@ -6,6 +6,7 @@
 body {
   overflow-x: hidden;
   @include body-font;
+  background-color: $gray-lighter;
 }
 
 .text-muted {
@@ -56,6 +57,10 @@ h6 {
 
 .img-centered {
   margin: 0 auto;
+}
+
+.bg-white {
+  background-color: white;
 }
 
 .bg-light-gray {
